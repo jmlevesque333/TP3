@@ -3,3 +3,6 @@ Jean-Michel Levesque A00172309
 #2 SELECT  prenom, nom FROM Acteurs ORDER BY prenom DESC
 #3 SELECT * FROM Villes, Pays WHERE Pays.population > 55000000
 #4 SELECT titre, langue FROM Films WHERE genre LIKE '%Drama%' AND pays = 'United States' AND annee >=2005 AND annee <= 2018
+SELECT DISTINCT titre, genre FROM Cinemas, Cinemas_Films, Films WHERE Cinemas.id = Cinemas_Films.idCinema AND Cinemas_Films.idFilm = Films.id
+SELECT DISTINCT pays, count(pays) FROM Films
+SELECT nom, prenom FROM Directeurs WHERE idDirecteur = (SELECT directeur FROM Films WHERE budget)
