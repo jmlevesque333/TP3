@@ -4,9 +4,8 @@ Jean-Michel Levesque A00172309
 #3 SELECT * FROM Villes, Pays WHERE Pays.population > 55000000
 #4 SELECT titre, langue FROM Films WHERE genre LIKE '%Drama%' AND pays = 'United States' AND annee >=2005 AND annee <= 2018
 #5 SELECT f.titre, f.genre FROM (SELECT id, titre, genre FROM Films)f, (SELECT idCinema, idFilm FROM Cinemas_Films)i, (SELECT id, ville FROM Cinemas)c, (SELECT idVille FROM Villes WHERE ville = 'Dieppe')v WHERE f.id = i.idFilm AND i.idCinema = c.id AND c.Ville = v.idVille 
-#6 ?? to do
-#7 SELECT DISTINCT pays, count(pays) FROM Films
+#6 SELECT DISTINCT pays, count(pays) FROM Films
+#7 SELECT DISTINCT nom, prenom FROM Directeurs, Films WHERE idDirecteur = (SELECT directeur FROM Films WHERE budget = (SELECT max(budget) FROM Films))
 #8 SELECT idCinema FROM Cinemas_Films GROUP BY idCinema having count(idFilm) >=3
-#9 SELECT Acteurs.nom, Villes.ville FROM Acteurs, Villes WHERE idActeur = (SELECT idActeur FROM Film_Acteurs GROUP BY idActeur HAVING       count(idFilm) >=2) AND Acteurs.ville = Villes.idVille
+#9 SELECT Acteurs.nom, Villes.ville FROM Acteurs, Villes WHERE idActeur = (SELECT idActeur FROM Film_Acteurs GROUP BY idActeur HAVING count(idFilm) >=2) AND Acteurs.ville = Villes.idVille
 #10 SELECT titre FROM Films WHERE budget > (SELECT max(budget) FROM Films WHERE genre LIKE '%Drama%')
-
